@@ -1,8 +1,10 @@
 package com.skypro.employee.controller;
 
+import com.skypro.employee.exception.InvalidEmployeeRequestException;
 import com.skypro.employee.model.Employee;
 import com.skypro.employee.record.EmployeeRequest;
 import com.skypro.employee.service.EmployeeService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,8 +32,13 @@ public class EmployeeController {
 
     @PostMapping("/employees")
 
-    public Employee addEmployee(@RequestBody EmployeeRequest employeeRequest) {
-        return this.employeeService.addEmployee(employeeRequest);
+    public ResponseEntity <Employee> addEmployee(@RequestBody EmployeeRequest employeeRequest) {
+        try {
+            return ResponseEntity.ok(this.employeeService.addEmployee(employeeRequest));
+        } catch (InvalidEmployeeRequestException e){
+            System.out.println(e);
+            return ResponseEntity.badRequest().build();
+        }
     }
 
 
