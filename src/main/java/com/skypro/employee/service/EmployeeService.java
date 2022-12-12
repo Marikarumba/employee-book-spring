@@ -66,4 +66,10 @@ public class EmployeeService {
                 .collect(Collectors.averagingDouble(Employee::getSalary));
 
     }
+
+    public Employee deleteEmployee(int id){
+        return employees.remove(id);
+    }
+
+
 }

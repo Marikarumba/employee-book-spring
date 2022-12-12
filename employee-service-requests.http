@@ -7,7 +7,7 @@ POST http://localhost:8080/employees
 Content-Type: application/json
 
 {
-  "firstName": "Test",
+  "firstName": "TestA",
   "lastName": "Test",
   "department": 1,
   "salary": 1000
@@ -18,8 +18,8 @@ POST http://localhost:8080/employees
 Content-Type: application/json
 
 {
-  "firstName": "Test2",
-  "lastName": "Test2",
+  "firstName": "TestB",
+  "lastName": "Test",
   "department": 2,
   "salary": 3000
 }
@@ -29,8 +29,8 @@ POST http://localhost:8080/employees
 Content-Type: application/json
 
 {
-  "firstName": "test3",
-  "lastName": "Test3",
+  "firstName": "testC",
+  "lastName": "Test",
   "department": 3,
   "salary": 2000
 }
@@ -40,8 +40,8 @@ POST http://localhost:8080/employees
 Content-Type: application/json
 
 {
-  "firstName": "Test4",
-  "lastName": "Test4",
+  "firstName": "TestD",
+  "lastName": "Test",
   "department": 4,
   "salary": 4000
 }
@@ -57,3 +57,18 @@ GET http://localhost:8080/employee/salary/max
 
 ### Получение всех сотрудников, зарплата которых больше средней зарплаты
 GET http://localhost:8080/employee/high-salary
+
+### Возвращает список сотрудников по департаменту
+GET http://localhost:8080/department/employees
+
+### Возвращает сумму зарплат по департаменту
+GET http://localhost:8080/department/4/salary/sum
+
+### Возвращает максимальную зарплату по департаменту
+GET http://localhost:8080/department/2/salary/max
+
+### Возвращает минимальную зарплату по департаменту
+GET http://localhost:8080/department/3/salary/min
+
+### Возвращает сотрудников сгруппированых по отделам в виде Map (номер отдела/список сотрудников данного отдела)
+GET http://localhost:8080/department/employees/group
